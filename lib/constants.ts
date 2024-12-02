@@ -21,3 +21,14 @@ export const footerContributors = [
     avatar: "/amjad.jpeg",
   },
 ];
+
+export const semesterMappings: Record<Semester, string> = {
+    "ONE": "1",
+    "TWO": "2",
+    "THREE": "3",
+    "FOUR": "4",
+    "FIVE": "5",
+    "SIX": "6",
+    "SEVEN": "7",
+    "EIGHT": "8",
+} as const;

@@ -3,6 +3,7 @@ import { format } from "date-fns";
 import { CalendarDaysIcon, GiftIcon } from "lucide-react";
 import { NamedValue } from "@/lib/types";
 import { cn } from "@/lib/utils";
+import { semesterMappings } from "@/lib/constants";
 
 interface BirthdayCardProps {
   name: string;
@@ -33,7 +34,7 @@ export function BirthdayCard({ name, age, date, semester, department, isBirthday
       <div className="special-card_muted_text text-sm">
         {date && <p>Birthday: {format(date, "MMMM do")}</p>}
         <p>{`${age.title}: ${age.value}`}</p>
-        <p>Semester: {semester}</p>
+        <p>Semester: {semesterMappings[semester] || semester}</p>
         <p>Department: {department}</p>
       </div>
     </div>
