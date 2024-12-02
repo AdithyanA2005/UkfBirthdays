@@ -1,5 +1,6 @@
-import { format, addDays } from "date-fns";
+import { addDays } from "date-fns";
 import { CalendarDays, Gift, PartyPopper } from "lucide-react";
+import { BirthdayCard } from "@/components/birthday-card";
 import { Navbar } from "@/components/navbar";
 import { prisma } from "@/lib/prisma";
 
@@ -104,21 +105,14 @@ export default async function Home() {
           {upcomingBirthdays.length > 0 && (
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
               {upcomingBirthdays.map((birthday) => (
-                <div
-                  key={birthday.id}
-                  className="special-card_bg group rounded-lg border border-primary/30 bg-card p-6 shadow-sm transition-shadow hover:border-primary hover:shadow-md"
-                >
-                  <div className="mb-2 flex items-center gap-2">
-                    <CalendarDays className="special-card_muted_text h-5 w-5" />
-                    <h3 className="special-card_text text-lg font-semibold">{birthday.name}</h3>
-                  </div>
-                  <div className="special-card_muted_text text-sm">
-                    <p>Birthday: {format(birthday.upcomingDate, "MMMM do")}</p>
-                    <p>Age: {birthday.upcomingDate.getFullYear() - new Date(birthday.date).getFullYear()}</p>
-                    <p>Semester: {birthday.semester}</p>
-                    <p>Department: {birthday.department}</p>
-                  </div>
-                </div>
+                <BirthdayCard
+                  id={birthday.id}
+                  name={birthday.name}
+                  age={birthday.upcomingDate.getFullYear() - new Date(birthday.date).getFullYear()}
+                  date={birthday.upcomingDate}
+                  semester={birthday.semester}
+                  department={birthday.department}
+                />
               ))}
             </div>
           )}
