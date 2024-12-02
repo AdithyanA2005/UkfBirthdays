@@ -4,6 +4,8 @@ import { cn } from "@/lib/utils";
 import { format } from "date-fns";
 import { CalendarDays } from "lucide-react";
 
+export const revalidate = 60
+
 async function getAllBirthdays() {
   const posts = await prisma.post.findMany({
     orderBy: {

@@ -3,6 +3,8 @@ import { prisma } from "@/lib/prisma";
 import { format, addDays } from "date-fns";
 import { CalendarDays, Gift, PartyPopper } from "lucide-react";
 
+export const revalidate = 60
+
 function isSameDayAndMonth(date1: Date, date2: Date) {
   return date1.getDate() === date2.getDate() && 
          date1.getMonth() === date2.getMonth();
