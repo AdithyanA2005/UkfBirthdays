@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -73,7 +72,7 @@
 
 @layer components {
   .special-card_bg {
-    @apply hover:bg-gradient-to-r hover:from-primary hover:to-cyan-500 hover:via-purple-500;
+    @apply hover:bg-gradient-to-r hover:from-primary hover:via-purple-500 hover:to-cyan-500;
   }
 
   .special-card_muted_text {

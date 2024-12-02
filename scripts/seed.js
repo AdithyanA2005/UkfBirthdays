@@ -1,12 +1,11 @@
-const { PrismaClient } = require('@prisma/client');
-const birthdays = require('./data/birthdays.json');
+const { PrismaClient } = require("@prisma/client");
+const birthdays = require("./data/birthdays.json");
 
 const prisma = new PrismaClient();
+const authorId = "";
 
 async function main() {
-  console.log('Starting to seed database...');
-
-  const authorId = '674dbef75a99df6552ee7a10';
+  console.log("Starting to seed database...");
 
   for (const birthday of birthdays) {
     try {
@@ -16,8 +15,8 @@ async function main() {
           date: new Date(birthday.dob),
           semester: birthday.sem,
           department: birthday.dept,
-          authorId: authorId
-        }
+          authorId: authorId,
+        },
       });
       console.log(`Created birthday entry for ${birthday.name}`);
     } catch (error) {
@@ -25,7 +24,7 @@ async function main() {
     }
   }
 
-  console.log('Seeding finished.');
+  console.log("Seeding finished.");
 }
 
 main()
