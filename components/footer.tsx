@@ -1,41 +1,21 @@
 import Image from "next/image";
 import Link from "next/link";
-import { GitHubIcon, GmailIcon, LinkedInIcon, XIcon } from "./icons";
+import { footerContributors, footerSocials } from "@/lib/constants";
 import { Logo } from "./logo";
 
 export function Footer() {
-  const socials = [
-    { name: "LinkedIn", url: "https://www.linkedin.com/in/iadithyana/", icon: LinkedInIcon },
-    { name: "GitHub", url: "https://github.com/AdithyanA2005/", icon: GitHubIcon },
-    { name: "Gmail", url: "mailto:adithyana2005@gmail.com", icon: GmailIcon },
-    { name: "X", url: "https://x.com/iadithyana/", icon: XIcon },
-  ];
-
-  const contributors = [
-    {
-      name: "Adithyan A",
-      github: "https://github.com/AdithyanA2005",
-      avatar: "/adithyan.png",
-    },
-    {
-      name: "Amjad Thaha",
-      github: "https://github.com/Amjad-Thaha",
-      avatar: "/amjad.jpeg",
-    },
-  ];
-
   return (
     <footer className="border-t border-primary">
       <section className="container mx-auto">
-        <div className="flex flex-col items-center justify-between gap-9 sm:gap-3 px-4 py-8 sm:flex-row md:px-8">
+        <div className="flex flex-col items-center justify-between gap-9 px-4 py-8 sm:flex-row sm:gap-3 md:px-8">
           <Logo />
 
-          <div className="flex flex-col gap-7 items-start">
+          <div className="flex flex-col items-start gap-7">
             <div className="flex items-center justify-center gap-4">
               <h4 className="text-center text-base font-semibold">Special Thanks</h4>
 
               <div className="flex items-center gap-2">
-                {contributors.map((contributor, index) => (
+                {footerContributors.map((contributor, index) => (
                   <Link
                     key={`contributor-${index}`}
                     href={contributor.github}
@@ -55,7 +35,7 @@ export function Footer() {
 
             <div className="flex items-center gap-5">
               <h4 className="text-center text-base font-semibold">Connect with dev</h4>
-              {socials.map((social, index) => (
+              {footerSocials.map((social, index) => (
                 <Link
                   key={`social_icon-${index}-${social.name}`}
                   href={social.url}
