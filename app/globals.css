@@ -63,10 +63,24 @@
 @layer base {
   * {
     @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: Arial, Helvetica, sans-serif;
+  }
 }
 
-body {
-    @apply bg-background text-foreground;
-  font-family: Arial, Helvetica, sans-serif;
-}
+@layer components {
+  .special-card_bg {
+    @apply hover:bg-gradient-to-r hover:from-primary hover:to-cyan-500 hover:via-purple-500;
+  }
+
+  .special-card_muted_text {
+    @apply text-muted-foreground group-hover:text-white/80;
+  }
+
+  .special-card_text {
+    @apply text-primary-foreground;
+  }
 }
