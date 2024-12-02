@@ -1,13 +1,12 @@
 import Link from "next/link";
+import { Logo } from "./logo";
 
 export function Navbar() {
   return (
-    <nav className="border-b">
+    <nav className="border-b bg-violet-200/5">
       <div className="container mx-auto flex h-16 items-center px-4">
         <div className="flex items-center space-x-4">
-          <Link href="/" className="text-xl font-semibold text-primary-foreground">
-            UKF Birthdays
-          </Link>
+          <Logo />
         </div>
 
         <div className="ml-auto">

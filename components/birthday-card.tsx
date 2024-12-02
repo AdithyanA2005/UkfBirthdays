@@ -17,7 +17,7 @@ export function BirthdayCard({ name, age, date, semester, department, isBirthday
   return (
     <div
       className={cn(
-        "rounded-lg border border-primary/30 bg-card p-6 shadow-sm transition-shadow hover:border-primary hover:shadow-md",
+        "rounded-lg border border-violet-500/20 bg-card p-6 shadow-sm transition-shadow hover:border-primary hover:shadow-md",
         "special-card_bg group",
       )}
     >
