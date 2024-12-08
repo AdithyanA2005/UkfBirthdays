@@ -1,42 +1,50 @@
 import { Semester, Department } from "@prisma/client";
 import { format } from "date-fns";
-import { CalendarDaysIcon, GiftIcon } from "lucide-react";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { semesterMappings } from "@/lib/constants";
 import { NamedValue } from "@/lib/types";
-import { cn } from "@/lib/utils";
 
 interface BirthdayCardProps {
   name: string;
   age: NamedValue<number>;
-  date?: Date;
-  semester: Semester;
-  department: Department;
+  date: NamedValue<Date>;
+  semester?: Semester;
+  department?: Department;
   isBirthday?: boolean;
 }
 
 export function BirthdayCard({ name, age, date, semester, department, isBirthday }: BirthdayCardProps) {
   return (
-    <div
-      className={cn(
-        "rounded-lg border border-violet-500/20 bg-card p-6 shadow-sm transition-shadow hover:border-primary hover:shadow-md",
-        "special-card_bg group",
-      )}
-    >
-      <div className="mb-2 flex items-center gap-2">
-        {isBirthday ? (
-          <GiftIcon className="h-5 w-5 text-primary group-hover:text-white" />
-        ) : (
-          <CalendarDaysIcon className="special-card_muted_text h-5 w-5" />
-        )}
+    <Card className="relative border-none bg-white text-center shadow-md transition-shadow hover:shadow-lg">
+      <CardHeader className="gap-2.5 pb-4">
+        {department || semester ? (
+          <div className="absolute right-0 top-0 rounded-bl-md rounded-tr-md bg-primary-700 px-4 py-0.5 text-sm font-extrabold text-white">
+            {semester ? `S${semesterMappings[semester]} ` : null}
+            {department ? department : null}
+          </div>
+        ) : null}
 
-        <h3 className="special-card_text text-lg font-semibold">{name}</h3>
-      </div>
-      <div className="special-card_muted_text text-sm">
-        {date && <p>Birthday: {format(date, "MMMM do")}</p>}
-        <p>{`${age.title}: ${age.value}`}</p>
-        <p>Semester: {semesterMappings[semester] || semester}</p>
-        <p>Department: {department}</p>
-      </div>
-    </div>
+        <Avatar className="mx-auto size-20 rounded-full">
+          <AvatarImage src="" alt={name} />
+          <AvatarFallback className="bg-primary-100 text-[1.6rem] font-extrabold text-primary">
+            {name.slice(0, 2)}
+          </AvatarFallback>
+        </Avatar>
+
+        <CardTitle className="text-[1.35rem] font-bold text-primary-700">{name}</CardTitle>
+      </CardHeader>
+
+      <CardContent className="grid grid-cols-2 gap-2 divide-x divide-primary-200 px-6 pb-6">
+        <div className="flex flex-col items-center">
+          <span className="text-xs font-semibold text-primary-900">{age.title}</span>
+          <span className="text-[1.4rem] font-bold text-primary-800">{age.value}</span>
+        </div>
+        <div className="flex flex-col items-center">
+          <span className="text-xs font-semibold text-primary-900">{date.title}</span>
+          <span className="text-[1.4rem] font-bold text-primary-800">{format(date.value, "MMM do")}</span>
+        </div>
+      </CardContent>
+    </Card>
   );
 }

@@ -24,7 +24,7 @@ export default async function Home() {
                 <BirthdayCard
                   name={birthday.name}
                   age={{ title: "Age", value: currentAge(birthday.date) }}
-                  date={birthday.date}
+                  date={{ title: "Birthday", value: birthday.date }}
                   isBirthday={true}
                   semester={birthday.semester}
                   department={birthday.department}
@@ -48,8 +48,8 @@ export default async function Home() {
               <li key={`upcoming-birthday-${index}`}>
                 <BirthdayCard
                   name={birthday.name}
-                  age={{ title: "Will Become", value: currentAge(birthday.date) + 1 }}
-                  date={birthday.date}
+                  age={{ title: "Turns", value: currentAge(birthday.date) + 1 }}
+                  date={{ title: "On", value: birthday.date }}
                   semester={birthday.semester}
                   department={birthday.department}
                 />

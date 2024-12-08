@@ -19,7 +19,7 @@ export default async function AllBirthdays() {
             <BirthdayCard
               name={birthday.name}
               age={{ title: "Age", value: currentAge(birthday.date) }}
-              date={birthday.date}
+              date={{ title: "Birthday", value: birthday.date }}
               semester={birthday.semester}
               department={birthday.department}
             />
