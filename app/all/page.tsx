@@ -1,5 +1,6 @@
 import { CalendarDays } from "lucide-react";
 import { BirthdayCard } from "@/components/birthday-card";
+import { Title } from "@/components/title";
 import { getAllBirthdays } from "@/actions/get-all-birthdays";
 import { currentAge } from "@/lib/utils";
 
@@ -10,10 +11,7 @@ export default async function AllBirthdays() {
 
   return (
     <main className="container mx-auto px-4 py-8">
-      <div className="mb-6 flex items-center gap-2 text-primary">
-        <CalendarDays className="h-6 w-6" />
-        <h1 className="text-2xl font-bold">All Birthdays</h1>
-      </div>
+      <Title title="All Birthdays" icon={CalendarDays} />
 
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {birthdays.map((birthday) => (

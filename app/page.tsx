@@ -1,6 +1,6 @@
 import { CalendarDays, PartyPopper } from "lucide-react";
 import { BirthdayCard } from "@/components/birthday-card";
-import { prisma } from "@/lib/prisma";
+import { Title } from "@/components/title";
 import { getRecentBirthdays } from "@/actions/get-recent-birthdays";
 import { currentAge } from "@/lib/utils";
 
@@ -15,10 +15,7 @@ export default async function Home() {
       {todayBirthdays.length > 0 && (
         <div className="mb-8">
           <div className="rounded-lg border border-primary-400 bg-primary-200 p-6">
-            <div className="mb-4 flex items-center gap-2">
-              <PartyPopper className="h-6 w-6 text-primary" />
-              <h2 className="text-2xl font-bold text-primary">Today's Birthdays!</h2>
-            </div>
+          <Title title="Today's Birthdays" icon={PartyPopper} />
 
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
               {todayBirthdays.map((birthday) => (
@@ -38,12 +35,10 @@ export default async function Home() {
 
       {/* Upcoming Birthdays */}
       <section>
-        <div className="mb-4 flex items-center gap-2">
-          <CalendarDays className="h-6 w-6 text-primary" />
-          <h2 className="text-2xl font-bold text-primary">
-            {upcomingBirthdays.length > 0 ? "Upcoming Birthdays" : "No upcoming birthdays this week"}
-          </h2>
-        </div>
+        <Title
+          title={hasUpcomingBirthdays ? "Upcoming Birthdays" : "No upcoming birthdays this week"}
+          icon={CalendarDays}
+        />
 
         {upcomingBirthdays.length > 0 && (
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
