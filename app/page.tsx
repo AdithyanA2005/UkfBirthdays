@@ -86,7 +86,7 @@ export default async function Home() {
       {/* Today's Birthdays */}
       {todayBirthdays.length > 0 && (
         <div className="mb-8">
-          <div className="rounded-lg border border-primary/20 bg-primary/10 p-6">
+          <div className="rounded-lg border border-primary-400 bg-primary-200 p-6">
             <div className="mb-4 flex items-center gap-2">
               <PartyPopper className="h-6 w-6 text-primary" />
               <h2 className="text-2xl font-bold text-primary">Today's Birthdays!</h2>
