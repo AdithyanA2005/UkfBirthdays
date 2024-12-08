@@ -1,9 +1,18 @@
+import localFont from "next/font/local";
 import Link from "next/link";
+import { cn } from "@/lib/utils";
 
-export function Logo() {
+const coinySans = localFont({
+  src: "../app/fonts/CoinyRegular.ttf",
+  variable: "--font-coiny-sans",
+});
+
+export function Logo({ className }: { className?: string }) {
   return (
-    <Link href="/">
-      <h1 className="text-xl font-bold text-primary-600 hover:text-primary-700 transition-all">UKF Birthdays</h1>
+    <Link href="/" className="flex items-center gap-2">
+      <h1 className={cn(coinySans.className, "text-primary-600 transition-all hover:text-primary-700", className)}>
+        UKF Birthdays
+      </h1>
     </Link>
   );
 }
