@@ -84,6 +84,10 @@
 }
 
 @layer components {
+  .cards-grid {
+    @apply grid gap-4 md:grid-cols-2 lg:grid-cols-3;
+  }
+
   .special-card_bg {
     @apply hover:bg-gradient-to-r hover:from-primary hover:via-purple-500 hover:to-cyan-500;
   }

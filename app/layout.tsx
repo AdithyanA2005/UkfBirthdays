@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import { Footer } from "@/components/footer";
 import { Navbar } from "@/components/navbar";
 import "./globals.css";
-import { Footer } from "@/components/footer";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -20,14 +20,10 @@ export const metadata: Metadata = {
   description: "Track and display birthdays for UKF students, featuring a modern UI with dark mode support.",
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode; }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-primary-100`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} bg-primary-100 antialiased`}>
         <div className="min-h-screen">
           <Navbar />
           {children}

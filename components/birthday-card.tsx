@@ -1,9 +1,9 @@
 import { Semester, Department } from "@prisma/client";
 import { format } from "date-fns";
 import { CalendarDaysIcon, GiftIcon } from "lucide-react";
+import { semesterMappings } from "@/lib/constants";
 import { NamedValue } from "@/lib/types";
 import { cn } from "@/lib/utils";
-import { semesterMappings } from "@/lib/constants";
 
 interface BirthdayCardProps {
   name: string;

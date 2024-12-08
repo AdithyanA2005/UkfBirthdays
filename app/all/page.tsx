@@ -13,17 +13,19 @@ export default async function AllBirthdays() {
     <main className="container mx-auto px-4 py-8">
       <Title title="All Birthdays" icon={CalendarDays} />
 
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-        {birthdays.map((birthday) => (
-          <BirthdayCard
-            name={birthday.name}
-            age={{ title: "Age", value: currentAge(birthday.date) }}
-            date={birthday.date}
-            semester={birthday.semester}
-            department={birthday.department}
-          />
+      <ul className="cards-grid">
+        {birthdays.map((birthday, index) => (
+          <li key={`birthday-${index}`}>
+            <BirthdayCard
+              name={birthday.name}
+              age={{ title: "Age", value: currentAge(birthday.date) }}
+              date={birthday.date}
+              semester={birthday.semester}
+              department={birthday.department}
+            />
+          </li>
         ))}
-      </div>
+      </ul>
     </main>
   );
 }

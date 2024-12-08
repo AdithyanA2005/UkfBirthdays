@@ -8,17 +8,19 @@ export const revalidate = 60;
 
 export default async function Home() {
   const { todayBirthdays, upcomingBirthdays } = await getRecentBirthdays();
+  const hasBirthdaysToday = todayBirthdays.length > 0;
+  const hasUpcomingBirthdays = upcomingBirthdays.length > 0;
 
   return (
     <main className="container mx-auto px-4 py-8">
       {/* Today's Birthdays */}
-      {todayBirthdays.length > 0 && (
-        <div className="mb-8">
-          <div className="rounded-lg border border-primary-400 bg-primary-200 p-6">
+      {hasBirthdaysToday ? (
+        <section className="mb-8 rounded-lg border border-primary-400 bg-primary-200 p-6">
           <Title title="Today's Birthdays" icon={PartyPopper} />
 
-            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-              {todayBirthdays.map((birthday) => (
+          <ul className="cards-grid">
+            {todayBirthdays.map((birthday, index) => (
+              <li key={`today-birthday-${index}`}>
                 <BirthdayCard
                   name={birthday.name}
                   age={{ title: "Age", value: currentAge(birthday.date) }}
@@ -27,11 +29,11 @@ export default async function Home() {
                   semester={birthday.semester}
                   department={birthday.department}
                 />
-              ))}
-            </div>
-          </div>
-        </div>
-      )}
+              </li>
+            ))}
+          </ul>
+        </section>
+      ) : null}
 
       {/* Upcoming Birthdays */}
       <section>
@@ -40,19 +42,21 @@ export default async function Home() {
           icon={CalendarDays}
         />
 
-        {upcomingBirthdays.length > 0 && (
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-            {upcomingBirthdays.map((birthday) => (
-              <BirthdayCard
-                name={birthday.name}
-                age={{ title: "Will Become", value: currentAge(birthday.date) + 1 }}
-                date={birthday.date}
-                semester={birthday.semester}
-                department={birthday.department}
-              />
+        {upcomingBirthdays.length > 0 ? (
+          <ul className="cards-grid">
+            {upcomingBirthdays.map((birthday, index) => (
+              <li key={`upcoming-birthday-${index}`}>
+                <BirthdayCard
+                  name={birthday.name}
+                  age={{ title: "Will Become", value: currentAge(birthday.date) + 1 }}
+                  date={birthday.date}
+                  semester={birthday.semester}
+                  department={birthday.department}
+                />
+              </li>
             ))}
-          </div>
-        )}
+          </ul>
+        ) : null}
       </section>
     </main>
   );
