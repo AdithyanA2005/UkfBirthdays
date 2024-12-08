@@ -1,15 +1,12 @@
 import { CalendarDays } from "lucide-react";
 import { BirthdayCard } from "@/components/birthday-card";
-import { prisma } from "@/lib/prisma";
+import { getAllBirthdays } from "@/actions/get-all-birthdays";
 import { currentAge } from "@/lib/utils";
 
 export const revalidate = 60;
 
 export default async function AllBirthdays() {
-  const birthdays = await prisma.post.findMany({
-    orderBy: { date: "asc" },
-    include: { author: true },
-  });
+  const birthdays = await getAllBirthdays();
 
   return (
     <main className="container mx-auto px-4 py-8">
