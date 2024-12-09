@@ -1,5 +1,4 @@
-import { XIcon } from "lucide-react";
-import { LinkedInIcon, GitHubIcon, GmailIcon } from "@/components/icons";
+import { LinkedInIcon, GitHubIcon, GmailIcon, XIcon } from "@/components/icons";
 import { Semester } from "@prisma/client";
 
 export const footerSocials = [
