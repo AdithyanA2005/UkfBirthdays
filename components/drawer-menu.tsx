@@ -17,7 +17,7 @@ export function DrawerMenu() {
     <Drawer>
       <DrawerTrigger>
         <Tooltip>
-          <TooltipTrigger>
+          <TooltipTrigger asChild>
             <PanelBottomOpenIcon className="size-6 text-primary-100" />
           </TooltipTrigger>
           <TooltipContent>Open Drawer</TooltipContent>
