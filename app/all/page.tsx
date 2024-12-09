@@ -10,7 +10,7 @@ export default async function AllBirthdays() {
   const birthdays = await getAllBirthdays();
 
   return (
-    <main className="container mx-auto px-4 py-8">
+    <>
       <Title title="All Birthdays" icon={CalendarDays} />
 
       <ul className="cards-grid">
@@ -26,6 +26,6 @@ export default async function AllBirthdays() {
           </li>
         ))}
       </ul>
-    </main>
+    </>
   );
 }

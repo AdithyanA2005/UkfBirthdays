@@ -12,10 +12,10 @@ export default async function Home() {
   const hasUpcomingBirthdays = upcomingBirthdays.length > 0;
 
   return (
-    <main className="container mx-auto px-4 py-8">
+    <>
       {/* Today's Birthdays */}
       {hasBirthdaysToday ? (
-        <section className="mb-8 rounded-lg border border-primary-400 bg-primary-200 p-6">
+        <section className="mb-8 rounded-lg border border-primary-500 bg-primary-200 p-6">
           <Title title="Today's Birthdays" icon={PartyPopper} />
 
           <ul className="cards-grid">
@@ -58,6 +58,6 @@ export default async function Home() {
           </ul>
         ) : null}
       </section>
-    </main>
+    </>
   );
 }
