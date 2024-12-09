@@ -32,17 +32,17 @@ export function BirthdayCard({ name, age, date, semester, department, isBirthday
           </AvatarFallback>
         </Avatar>
 
-        <CardTitle className="text-[1.35rem] font-bold text-primary-700">{name}</CardTitle>
+        <CardTitle className="text-[1.35rem] font-bold text-primary-800">{name}</CardTitle>
       </CardHeader>
 
       <CardContent className="grid grid-cols-2 gap-2 divide-x divide-primary-200 px-6 pb-6">
         <div className="flex flex-col items-center">
           <span className="text-xs font-semibold text-primary-700">{age.title}</span>
-          <span className="text-[1.4rem] font-bold text-primary-600">{age.value}</span>
+          <span className="text-[1.4rem] font-bold text-primary-500">{age.value}</span>
         </div>
         <div className="flex flex-col items-center">
           <span className="text-xs font-semibold text-primary-700">{date.title}</span>
-          <span className="text-[1.4rem] font-bold text-primary-600">{format(date.value, "MMM do")}</span>
+          <span className="text-[1.4rem] font-bold text-primary-500">{format(date.value, "MMM do")}</span>
         </div>
       </CardContent>
     </Card>

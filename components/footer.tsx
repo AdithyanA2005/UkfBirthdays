@@ -1,8 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
-import { footerContributors, footerSocials } from "@/lib/constants";
 import { Logo } from "@/components/logo";
+import { footerContributors, footerSocials } from "@/lib/constants";
 
 export function Footer() {
   return (
