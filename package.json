@@ -9,6 +9,12 @@
     "lint": "next lint",
     "postinstall": "prisma generate"
   },
+  "packageManager": "npm@10.8.1",
+  "overrides": {
+    "next": "15.0.3",
+    "react": "19.0.0-rc-66855b96-20241106",
+    "react-dom": "19.0.0-rc-66855b96-20241106"
+  },
   "dependencies": {
     "@prisma/client": "^6.0.1",
     "@radix-ui/react-avatar": "^1.1.1",
@@ -22,7 +28,8 @@
     "react": "19.0.0-rc-66855b96-20241106",
     "react-dom": "19.0.0-rc-66855b96-20241106",
     "tailwind-merge": "^2.5.5",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "vaul": "^1.1.1"
   },
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "^4.3.0",
