@@ -15,7 +15,7 @@ export default async function Home() {
     <>
       {/* Today's Birthdays */}
       {hasBirthdaysToday ? (
-        <section className="mb-8 rounded-lg border border-primary-500 bg-primary-200 p-6">
+        <section className="mb-8 rounded-lg border border-primary-500 bg-primary-300 p-6">
           <Title title="Today's Birthdays" icon={PartyPopper} />
 
           <ul className="cards-grid">

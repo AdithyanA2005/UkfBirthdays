@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { BalloonAnimation } from "@/components/balloon-animation";
 import { Footer } from "@/components/footer";
 import { Navbar } from "@/components/navbar";
 import "./globals.css";
@@ -26,7 +27,11 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} bg-primary-200 antialiased`}>
         <TooltipProvider>
-          <div className="flex min-h-screen flex-col">
+          <div className="fixed inset-0 z-0 h-full">
+            <BalloonAnimation />
+          </div>
+
+          <div className="relative z-10 flex min-h-screen flex-col">
             <Navbar />
             <main className="container mx-auto flex-1 px-4 pb-16 pt-12">{children}</main>
             <Footer />

@@ -4,6 +4,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { semesterMappings } from "@/lib/constants";
 import { NamedValue } from "@/lib/types";
+import { cn } from "@/lib/utils";
 
 interface BirthdayCardProps {
   name: string;
@@ -16,7 +17,12 @@ interface BirthdayCardProps {
 
 export function BirthdayCard({ name, age, date, semester, department, isBirthday }: BirthdayCardProps) {
   return (
-    <Card className="relative border-none bg-white text-center shadow-md transition-all hover:-translate-y-2 hover:scale-105 hover:shadow-xl hover:shadow-primary-300">
+    <Card
+      className={cn(
+        "relative bg-white text-center shadow-md transition-all hover:-translate-y-2 hover:scale-105 hover:shadow-xl hover:shadow-primary-300",
+        isBirthday ? "border border-primary-600" : "border-none",
+      )}
+    >
       <CardHeader className="mb-1 gap-2.5 rounded-[inherit] pb-4">
         {department || semester ? (
           <div className="absolute right-0 top-0 rounded-bl-[inherit] rounded-tr-[inherit] bg-primary-300 px-3 py-1 text-sm font-extrabold text-primary-800">
