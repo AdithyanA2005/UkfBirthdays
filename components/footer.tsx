@@ -6,7 +6,7 @@ import { footerContributors, footerSocials } from "@/lib/constants";
 
 export function Footer() {
   return (
-    <footer className="border-t border-primary-700 bg-primary-200">
+    <footer className="border-t border-primary-700 bg-primary-300">
       {/* TOP */}
       <section className="container mx-auto">
         <div className="flex flex-col items-center justify-between gap-9 px-4 py-8 sm:flex-row sm:gap-3 md:px-8">
@@ -68,7 +68,7 @@ export function Footer() {
       </section>
 
       {/* BOTTOM */}
-      <section className="bg-primary-300">
+      <section className="bg-primary-400">
         <div className="container mx-auto flex items-center justify-center gap-2 px-4 py-4 md:px-8">
           <span className="font-semibold text-primary-950">Developed By</span>
           <Link href="https://adithyana.vercel.app/" target="_blank">

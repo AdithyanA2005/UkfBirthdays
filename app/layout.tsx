@@ -24,13 +24,13 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} bg-primary-100 antialiased`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} bg-primary-200 antialiased`}>
         <TooltipProvider>
-          <div className="min-h-screen">
+          <div className="flex min-h-screen flex-col">
             <Navbar />
-            <main className="container mx-auto px-4 pb-12 pt-6">{children}</main>
+            <main className="container mx-auto flex-1 px-4 pb-16 pt-12">{children}</main>
+            <Footer />
           </div>
-          <Footer />
         </TooltipProvider>
       </body>
     </html>
