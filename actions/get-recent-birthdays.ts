@@ -15,14 +15,15 @@ type BirthdayLists = {
 
 export async function getRecentBirthdays(): Promise<BirthdayLists> {
   // Extract the current month and day
-  const today = new Date();
-  const todayMonth = today.getMonth() + 1; // Months are 0-indexed
-  const todayDay = today.getDate();
+  const startDate = new Date();
+  const startMonth = startDate.getMonth() + 1; // Months are 0-indexed
+  const startDay = startDate.getDate();
 
-  // Extract the month and day for the end of the week
-  const nextWeek = addDays(today, 7);
-  const nextWeekMonth = nextWeek.getMonth() + 1;
-  const nextWeekDay = nextWeek.getDate();
+  // Extract the month and day after specified days after today
+  const extraSpan = 7; // no of extra days after today to reach end date
+  const endDate = addDays(startDate, extraSpan);
+  const endMonth = endDate.getMonth() + 1;
+  const endDay = endDate.getDate();
 
   // MongoDB aggregation to filter birthdays by month and day
   const posts = (await prisma.post.aggregateRaw({
@@ -37,16 +38,13 @@ export async function getRecentBirthdays(): Promise<BirthdayLists> {
         $match: {
           $or: [
             {
-              // If the range doesn't cross a month boundary
               $and: [
-                { birthdayMonth: { $eq: todayMonth } },
-                { birthdayDay: { $gte: todayDay } },
-                { birthdayDay: { $lte: 31 } },
+                { birthdayMonth: { $eq: startMonth } },
+                { birthdayDay: { $gte: startDay, $lte: startDay + extraSpan } },
               ],
             },
             {
-              // Handle cases where the range spans to the next month
-              $and: [{ birthdayMonth: { $eq: nextWeekMonth } }, { birthdayDay: { $lte: nextWeekDay } }],
+              $and: [{ birthdayMonth: { $ne: startMonth, $eq: endMonth } }, { birthdayDay: { $gte: 1, $lte: endDay } }],
             },
           ],
         },
@@ -61,7 +59,7 @@ export async function getRecentBirthdays(): Promise<BirthdayLists> {
   const result = posts.reduce(
     (acc: BirthdayLists, post) => {
       const birthDate = new Date(post.date.$date);
-      const isToday = isSameDayAndMonth(birthDate, today);
+      const isToday = isSameDayAndMonth(birthDate, startDate);
       const birthday: Birthday = { ...post, date: birthDate, isToday };
 
       // Directly push to the appropriate array based on the 'isToday' check
