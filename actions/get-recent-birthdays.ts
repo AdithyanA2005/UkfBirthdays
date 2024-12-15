@@ -49,6 +49,12 @@ export async function getRecentBirthdays(): Promise<BirthdayLists> {
           ],
         },
       },
+      {
+        $sort: {
+          birthdayMonth: 1,
+          birthdayDay: 1,
+        },
+      },
     ],
   })) as unknown as ModifyField<Post, "date", { $date: string }>[] | null | undefined;
 
@@ -72,8 +78,8 @@ export async function getRecentBirthdays(): Promise<BirthdayLists> {
   );
 
   // Sort the birthdays
-  result.todayBirthdays.sort((a, b) => a.date.getTime() - b.date.getTime());
-  result.upcomingBirthdays.sort((a, b) => a.date.getTime() - b.date.getTime());
+  // result.todayBirthdays.sort((a, b) => a.date.getTime() - b.date.getTime());
+  // result.upcomingBirthdays.sort((a, b) => a.date.getTime() - b.date.getTime());
 
   return result;
 }
